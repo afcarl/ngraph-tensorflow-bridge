@@ -16,7 +16,7 @@ before_install:
 install: true
 
 script:
- - make-docker-ngtf-bridge-ci.sh travis_ci_image
+ - ./make-docker-ngtf-bridge-ci.sh travis_ci_image
 
 branches:
  only:
