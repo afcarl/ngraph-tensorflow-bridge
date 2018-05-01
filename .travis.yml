@@ -14,7 +14,7 @@ services:
 install: true
 
 script:
- - ci/docker/make-docker-ngtf-bridge-ci.sh
+ - test/ci/docker/make-docker-ngtf-bridge-ci.sh
 
 branches:
  only:
