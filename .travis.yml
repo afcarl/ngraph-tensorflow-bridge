@@ -14,7 +14,7 @@ services:
 install: true
 
 script:
- - test/ci/docker/make-docker-ngtf-bridge-ci.sh
+ - test/ci/docker/make-docker-ngtf-bridge-ci.sh travis_ci_image
 
 branches:
  only:
