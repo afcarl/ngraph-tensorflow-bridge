@@ -10,8 +10,7 @@ services:
 
 before_install:
  - cd test/ci/docker
-# - docker pull test/ci/docker/Dockerfile.ngtf-bridge-ci
-# - DOCKER COMMAND HERE
+ - sudo apt-get install wget
 
 install: true
 
