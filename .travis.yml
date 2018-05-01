@@ -9,7 +9,8 @@ services:
 # - 
 
 before_install:
- - docker pull test/ci/docker/Dockerfile.ngtf-bridge-ci
+ - cd /test/ci/docker
+# - docker pull test/ci/docker/Dockerfile.ngtf-bridge-ci
 # - DOCKER COMMAND HERE
 
 install: true
