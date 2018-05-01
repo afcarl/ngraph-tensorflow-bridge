@@ -1,0 +1,22 @@
+sudo:  required
+
+language:  cpp
+
+services:
+ - docker
+
+#env:
+# - 
+
+#before_install:
+# - DOCKER COMMAND HERE
+
+install: true
+
+script:
+ - ci/docker/make-docker-ngtf-bridge-ci.sh
+
+branches:
+ only:
+#  - "master"
+  - "kims_ngraph_1666"
