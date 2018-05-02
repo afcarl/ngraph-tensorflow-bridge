@@ -31,7 +31,8 @@ docker_dataset='/home/dockuser/dataset'
 
 # Find the top-level bridge directory, so we can mount it into the docker
 # container
-bridge_dir="$(realpath ../../..)"
+#bridge_dir="$(realpath ../../..)"
+bridge_dir="$(readlink -f ../../..)"
 
 bridge_mountpoint='/home/dockuser/bridge'
 
