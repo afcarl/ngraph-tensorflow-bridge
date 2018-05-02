@@ -11,7 +11,7 @@ services:
 before_install:
  - cd test/ci/docker
 # - sudo apt-get install wget
- - docker build -t travis_ci_image -f Dockerfile.ngtf-bridge-ci
+ - docker build -t travis_ci_image -f Dockerfile.ngtf-bridge-ci .
 
 install: true
 
