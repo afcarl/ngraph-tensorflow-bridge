@@ -15,6 +15,7 @@ before_install:
 # - sudo apt-get install wget
  - docker build -t travis_ci_image -f Dockerfile.ngtf-bridge-ci .
  - cd ..
+ - ls /home/travis/buld/
 
 install: true
 
