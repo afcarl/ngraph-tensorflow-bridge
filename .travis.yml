@@ -28,7 +28,6 @@ script:
  - ./run-premerge-ci-checks.sh
 
 
-
 branches:
  only:
 #  - "master"
