@@ -13,9 +13,9 @@ before_install:
  - git clone https://github.com/NervanaSystems/ngraph-tensorflow.git /home/travis/build/ngraph-tensorflow
  - pwd
  - cd test/ci/docker
- - docker build -t travis_ci_image -f Dockerfile.ngtf-bridge-ci .
+# - docker build -t travis_ci_image -f Dockerfile.ngtf-bridge-ci .
  - cd ..
- #- ls /home/travis/buld/
+ - ls ../../..
 
 install: true
 
