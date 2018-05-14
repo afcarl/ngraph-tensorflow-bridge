@@ -32,7 +32,7 @@ set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 ExternalProject_Add(
     ext_ngraph
     GIT_REPOSITORY https://github.com/NervanaSystems/ngraph
-    GIT_TAG eec19220d95810c438dad642bdd81315602186dd
+    GIT_TAG a2ba10b53ea3e0c84562e5581a7ef89da36abe1b
     CMAKE_ARGS -DNGRAPH_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/ngraph/ngraph_dist -DNGRAPH_USE_PREBUILT_LLVM=TRUE
     TMP_DIR "${CMAKE_CURRENT_BINARY_DIR}/ngraph/tmp"
     STAMP_DIR "${CMAKE_CURRENT_BINARY_DIR}/ngraph/stamp"

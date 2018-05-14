@@ -70,22 +70,22 @@ def test_mlp_mnist_cpu_backend():
     iterations = int(os.environ.get('TEST_MLP_MNIST_ITERATIONS', 100000))
 
     # Run with Google CPU defaults, saving timing and accuracy
-    referenceLog = VT.runMnistScript(logID=' Reference',
-                                     useNGraph=False,
-                                     script=script,
-                                     python=kPythonProg,
-                                     iterations=iterations,
-                                     dataDirectory=dataDir)
+    referenceLog = VT.runMlpMnistScript(logID=' Reference',
+                                        useNGraph=False,
+                                        script=script,
+                                        python=kPythonProg,
+                                        iterations=iterations,
+                                        dataDirectory=dataDir)
     referenceResults = processOutput(referenceLog)
 
     # Run with NGraph CPU backend, saving timing and accuracy
     VT.checkNGraphEnvironment()
-    ngraphLog = VT.runMnistScript(logID=' nGraph',
-                                  useNGraph=True,
-                                  script=script,
-                                  python=kPythonProg,
-                                  iterations=iterations,
-                                  dataDirectory=dataDir)
+    ngraphLog = VT.runMlpMnistScript(logID=' nGraph',
+                                     useNGraph=True,
+                                     script=script,
+                                     python=kPythonProg,
+                                     iterations=iterations,
+                                     dataDirectory=dataDir)
     ngraphResults = processOutput(ngraphLog)
     
     lDir = None
@@ -144,8 +144,8 @@ def test_mlp_mnist_cpu_backend():
                 % referenceResults['wallclock'])
     logOut.line('Run with NGraph CPU took: %f seconds'
                 % ngraphResults['wallclock'])
-    logOut.line('NGraph was %f times longer than default (wall-clock measurement)'
-                % (ngraphResults['wallclock'] / referenceResults['wallclock']))
+    logOut.line('NGraph was %f times faster than default (wall-clock measurement)'
+                % (referenceResults['wallclock'] / ngraphResults['wallclock']))
 
 # End: test_mlp_mnist_cpu_backend()
 
@@ -216,10 +216,10 @@ def writeJenkinsDescription(refResults, ngResults, iterations, fileName):
         refAccPercent = float(refResults['accuracy']) * 100.0
         ngAccPercent = float(ngResults['accuracy']) * 100.0
 
-        fOut.write( 'MNIST-MLP accuracy - ref: %5.2f%%, ngraph: %5.2f%%, delta %4.2f; ngraph %4.2fx slower; %d steps'
+        fOut.write( 'MNIST-MLP accuracy - ref: %5.2f%%, ngraph: %5.2f%%, delta %4.2f; ngraph %4.2fx faster; %d steps'
                     % (refAccPercent, ngAccPercent,
                        abs(refAccPercent - ngAccPercent),
-                       (ngResults['wallclock']/refResults['wallclock']),
+                       (refResults['wallclock']/ngResults['wallclock']),
                        iterations))
 
         fOut.close()
