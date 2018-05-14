@@ -11,13 +11,13 @@ services:
 
 before_install:
  - git clone --depth=50 https://github.com/NervanaSystems/ngraph-tensorflow.git /home/travis/build/ngraph-tensorflow
- - ls /home/travis/build/ngraph-tensorflow
+# - ls /home/travis/build/ngraph-tensorflow
  - cd test/ci/docker
-# - docker build -t travis_ci_image -f Dockerfile.ngtf-bridge-ci .
+ - docker build -t travis_ci_image -f Dockerfile.ngtf-bridge-ci .
  - cd ..
- - pwd
- - ls /home/travis/build/ngraph-tensorflow
- - ls /home/travis/build/NervanaSystems/test/ci/..
+# - pwd
+# - ls /home/travis/build/ngraph-tensorflow
+# - ls /home/travis/build/NervanaSystems/test/ci/..
 
 install: true
 
@@ -25,7 +25,9 @@ script:
  #- ./make-docker-ngtf-bridge-ci.sh travis_ci_image
 # This is the long run.
  #- ./docker-run-ngtf-bridge-validation-test.sh travis_ci_test
- - ./run-premerge-ci-checks.sh
+
+ - ./run-unit-tests.sh
+ - ./run-premerge-ci-checks.sh /home/travis/build/ngraph-tensorflow
 
 
 branches:
