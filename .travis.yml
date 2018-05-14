@@ -27,7 +27,7 @@ script:
  #- ./docker-run-ngtf-bridge-validation-test.sh travis_ci_test
 
  - ./run-unit-tests.sh
- - ./run-premerge-ci-checks.sh /home/travis/build/ngraph-tensorflow
+# - ./run-premerge-ci-checks.sh /home/travis/build/ngraph-tensorflow
 
 
 branches:
