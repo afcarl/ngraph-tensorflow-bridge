@@ -18,10 +18,8 @@ before_install:
 install: true
 
 script:
- #- ./make-docker-ngtf-bridge-ci.sh travis_ci_image
 # This is the long run.
- #- ./docker-run-ngtf-bridge-validation-test.sh travis_ci_test
-
+# - ./docker-run-ngtf-bridge-validation-test.sh travis_ci_test
  - ./run-unit-tests.sh
 # - ./run-premerge-ci-checks.sh /home/travis/build/ngraph-tensorflow
 
