@@ -11,7 +11,9 @@ services:
  - NGRAPH_VLOG_LEVEL=0
 
 before_install:
+ - sudo -E apt-get install python-numpy python-dev python-pip python-wheel
  - git clone --depth=50 https://github.com/NervanaSystems/ngraph-tensorflow.git /home/travis/build/ngraph-tensorflow
+ - sudo -E apt-get install python-virtualenv
  - cd test/ci/docker
  - docker build -t travis_ci_image -f Dockerfile.ngtf-bridge-ci .
  - cd ..
