@@ -11,23 +11,17 @@ services:
  - NGRAPH_VLOG_LEVEL=0
 
 before_install:
- - pwd
  - sudo -E apt-get install python-numpy python-dev python-pip python-wheel
- - pwd
  - git clone --depth=50 https://github.com/NervanaSystems/ngraph-tensorflow.git /home/travis/build/ngraph-tensorflow
- - pwd
  - sudo -E apt-get install python-virtualenv
- - pwd
  - virtualenv --system-site-packages ~/tensorflow
- - pwd
  - source ~/tensorflow/bin/activate
- - pwd
  - easy_install -U pip
+ - pip install --upgrade tensorflow
 
  - pwd
  - ls ..
 
- - pip install --upgrade tensorflow
  - cd ngraph-tensorflow
  - git checkout ngraph-tensorflow-preview-0
 
