@@ -16,6 +16,10 @@ before_install:
  - sudo -E apt-get install python-virtualenv
  - virtualenv --system-site-packages ~/tensorflow
 
+ - source ~/tensorflow/bin/activate
+ - easy_install -U pip
+
+
 
  - cd test/ci/docker
  - docker build -t travis_ci_image -f Dockerfile.ngtf-bridge-ci .
