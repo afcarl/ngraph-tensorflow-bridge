@@ -19,7 +19,7 @@ before_install:
  - easy_install -U pip
 
  - pwd
- - ls
+ - ls ..
 
  - pip install --upgrade tensorflow
  - cd ngraph-tensorflow
