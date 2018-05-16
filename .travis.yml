@@ -18,6 +18,9 @@ before_install:
  - source ~/tensorflow/bin/activate
  - easy_install -U pip
 
+ - pwd
+ - ls
+
  - pip install --upgrade tensorflow
  - cd ngraph-tensorflow
  - git checkout ngraph-tensorflow-preview-0
