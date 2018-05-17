@@ -5,6 +5,14 @@ language:  cpp
 services:
  - docker
 
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - wget
+      - pkg-config
+
 #env:
  #- TF_NG_MODEL_DATASET=resnet20-cifar10 
  #- TF_NG_EPOCHS=1
