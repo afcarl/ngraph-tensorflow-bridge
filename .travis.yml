@@ -46,10 +46,11 @@ before_install:
  - export TF_NEED_CUDA=0
  - export TF_NEED_MPI=0
 
- #- wget https://github.com/bazelbuild/bazel/releases/download/0.3.1/bazel_0.3.1-linux-x86_64.deb
- - wget https://github.com/bazelbuild/bazel/releases/download/0.13.0/bazel_0.13.0-linux-x86_64.deb.sha256
+ - echo $PATH
+ - wget https://github.com/bazelbuild/bazel/releases/download/0.3.1/bazel_0.3.1-linux-x86_64.deb
+ #- wget https://github.com/bazelbuild/bazel/releases/download/0.13.0/bazel_0.13.0-linux-x86_64.deb.sha256
  #- /usr/bin/sha256sum -c bazel_0.3.1-linux-x86_64.deb
- - /usr/bin/sha256sum -c bazel_0.13.0-linux-x86_64.deb.sha256
+ #- /usr/bin/sha256sum -c bazel_0.13.0-linux-x86_64.deb.sha256
  - sudo dpkg -i bazel_0.3.1-linux-x86_64.deb
 
 # - bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package
