@@ -5,15 +5,15 @@ language:  cpp
 services:
  - docker
 
-dist:  trusty
+#dist:  trusty
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - wget
-      - pkg-config
+#addons:
+#  apt:
+#    sources:
+#      - ubuntu-toolchain-r-test
+#    packages:
+#      - wget
+#      - pkg-config
 
 #env:
  #- TF_NG_MODEL_DATASET=resnet20-cifar10 
@@ -32,7 +32,7 @@ before_install:
  - pip install --upgrade tensorflow
  - cd ngraph-tensorflow
  - git checkout ngraph-tensorflow-preview-0
- # Normally, this is done with a configure script. 
+ # Normally, these are done with a configure script. 
  - export CC_OPT_FLAGS="-march=native"
  - export USE_DEFAULT_PYTHON_LIB_PATH=1
  - export TF_ENABLE_XLA=1
