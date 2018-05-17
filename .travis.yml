@@ -54,9 +54,10 @@ before_install:
  #- /usr/bin/sha256sum -c bazel_0.13.0-linux-x86_64.deb.sha256
  #- sudo dpkg -i bazel_0.3.1-linux-x86_64.deb
  - sudo dpkg -i bazel_0.13.0-linux-x86_64.deb
+ - bazel version
 
 # - bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package
-# - bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+ - bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 # - cd test/ci/docker
 # - docker build -t travis_ci_image -f Dockerfile.ngtf-bridge-ci .
 # - cd ..
