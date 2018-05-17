@@ -21,6 +21,7 @@ before_install:
 
  - pwd
  - ls ..
+ - ls /home
 
  - cd ngraph-tensorflow
  - git checkout ngraph-tensorflow-preview-0
