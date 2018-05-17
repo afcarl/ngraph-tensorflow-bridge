@@ -5,6 +5,8 @@ language:  cpp
 services:
  - docker
 
+dist:  trusty
+
 addons:
   apt:
     sources:
