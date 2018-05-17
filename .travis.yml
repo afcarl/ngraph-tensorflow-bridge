@@ -20,13 +20,24 @@ before_install:
  - source ~/tensorflow/bin/activate
  - easy_install -U pip
  - pip install --upgrade tensorflow
-
-# - pwd
-# - ls ..
-# - ls /home
-
  - cd ngraph-tensorflow
  - git checkout ngraph-tensorflow-preview-0
+ # Normally, this is done with a configure script. 
+ - export CC_OPT_FLAGS="-march=native"
+ - export USE_DEFAULT_PYTHON_LIB_PATH=1
+ - export TF_ENABLE_XLA=1
+ - export TF_NEED_MKL=0
+ - export TF_DOWNLOAD_MKL=0
+ - export TF_NEED_JEMALLOC=1
+ - export TF_NEED_GCP=0
+ - export TF_NEED_HDFS=0
+ - export TF_NEED_VERBS=0
+ - export TF_NEED_OPENCL=0
+ - export TF_NEED_CUDA=0
+ - export TF_NEED_MPI=0
+
+ - bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package
+ - bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
 
  - cd test/ci/docker
  - docker build -t travis_ci_image -f Dockerfile.ngtf-bridge-ci .
