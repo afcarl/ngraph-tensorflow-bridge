@@ -50,10 +50,21 @@ before_install:
  - wget https://github.com/bazelbuild/bazel/releases/download/0.13.0/bazel_0.13.0-linux-x86_64.deb
  # You could do a sha256sum check (-c) here but I never got it to work nicely
  - sudo dpkg -i bazel_0.13.0-linux-x86_64.deb
- - bazel version
 
  - bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package
  - bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+
+ - pip install -U /tmp/tensorflow_pkg/tensorflow-1.*whl
+ - cd ..
+ - git clone https://github.com/NervanaSystems/ngraph-tensorflow-bridge.git
+ - cd ngraph-tensorflow-bridge
+ - mkdir build
+ - cd build
+ - cmake ../
+
+
+
+
 # - cd test/ci/docker
 # - docker build -t travis_ci_image -f Dockerfile.ngtf-bridge-ci .
 # - cd ..
