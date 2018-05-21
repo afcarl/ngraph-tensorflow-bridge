@@ -32,7 +32,7 @@ set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 ExternalProject_Add(
     ext_ngraph
     GIT_REPOSITORY https://github.com/NervanaSystems/ngraph
-    GIT_TAG eec19220d95810c438dad642bdd81315602186dd
+    GIT_TAG a2ba10b53ea3e0c84562e5581a7ef89da36abe1b
     CMAKE_ARGS -DNGRAPH_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/ngraph/ngraph_dist -DNGRAPH_USE_PREBUILT_LLVM=TRUE
     TMP_DIR "${CMAKE_CURRENT_BINARY_DIR}/ngraph/tmp"
     STAMP_DIR "${CMAKE_CURRENT_BINARY_DIR}/ngraph/stamp"
@@ -41,6 +41,7 @@ ExternalProject_Add(
     BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/ngraph/build"
     BUILD_COMMAND ${CMAKE_MAKE_PROGRAM} -j $(nproc) ngraph
     UPDATE_COMMAND ""
+    INSTALL_DIR "${CMAKE_INSTALL_PREFIX}"
 )
 
 set( NGRAPH_DIR ${CMAKE_CURRENT_BINARY_DIR}/ngraph/ngraph_dist)
@@ -49,7 +50,10 @@ set( NGRAPH_DIR ${CMAKE_CURRENT_BINARY_DIR}/ngraph/ngraph_dist)
 find_package(TensorFlow REQUIRED)
 
 # Set the Install Prefix, rpath etc. here (cannot be done in the sub directories)
-set(CMAKE_INSTALL_PREFIX ${TensorFlow_DIR})
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+    set(CMAKE_INSTALL_PREFIX ${TensorFlow_DIR})
+endif()
+MESSAGE("INSTALL DIR: ${CMAKE_INSTALL_PREFIX}")
 
 # Add the directories to be built
 add_subdirectory(src)

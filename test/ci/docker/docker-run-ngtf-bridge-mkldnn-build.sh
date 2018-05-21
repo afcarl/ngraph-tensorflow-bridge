@@ -40,7 +40,7 @@ bridge_mountpoint='/home/dockuser/bridge'
 ngtf_mountpoint='/home/dockuser/ngtf'
 
 RUNASUSER_SCRIPT="${bridge_mountpoint}/test/ci/docker/docker-scripts/run-as-user.sh"
-BUILD_SCRIPT="${bridge_mountpoint}/test/ci/docker/docker-scripts/run-ngtf-bridge-build.sh"
+BUILD_SCRIPT="${bridge_mountpoint}/test/ci/docker/docker-scripts/run-ngtf-mkldnn-build.sh"
 
 docker run --rm \
        --env RUN_UID="$(id -u)" \
