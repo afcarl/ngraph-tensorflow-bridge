@@ -246,6 +246,33 @@ Status NGraphEmitter::ProcessElementwiseBinary(HloInstruction* hlo,
 }
 
 //---------------------------------------------------------------------------
+// NGraphEmitter::ProcessClamp()
+//---------------------------------------------------------------------------
+Status NGraphEmitter::ProcessClamp(HloInstruction* clamp) {
+  NGRAPH_VLOG(2) << "NGraphEmitter::" << __func__ << ": "
+                 << "HloInstruction " << clamp->ToString();
+
+  const auto& operands = clamp->operands();
+  TF_RET_CHECK(operands.size() == 3);
+
+  auto ng_min = m_op_map.find(operands[0])->second;
+  auto ng_arg = m_op_map.find(operands[1])->second;
+  auto ng_max = m_op_map.find(operands[2])->second;
+
+  NGRAPH_VLOG(3) << "Min operand: " << operands[0]->ToString() << ", "
+                 << "Arg operand: " << operands[1]->ToString() << ", "
+                 << "Max operand: " << operands[2]->ToString();
+
+  auto ng_op = std::make_shared<ngraph::op::Minimum>(
+      std::make_shared<ngraph::op::Maximum>(ng_arg, ng_min), 
+      ng_max);
+
+  m_op_map[clamp] = ng_op;
+  m_instruction_list.push_back({clamp->ToString(), ng_op->get_name()});
+  return Status::OK();
+}
+
+//---------------------------------------------------------------------------
 // NGraphEmitter::ProcessConcatenate()
 //---------------------------------------------------------------------------
 Status NGraphEmitter::ProcessConcatenate(

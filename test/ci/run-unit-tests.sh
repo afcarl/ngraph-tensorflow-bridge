@@ -351,13 +351,13 @@ declare -a enabled_tests=(
   "MinTenS32s"
   "MaxTenS32s"
   #"RemTwoConstantS32s"                       #remainder op unimplemented
-  #NonNanClampF32                             #clamp op unimplemented
-  #ClampF32Scalar                             #clamp op unimplemented
-  #ClampF32ScalarVector                       #clamp op unimplemented
-  #ClampS32Vector                             #clamp op unimplemented
-  #ClampS32ScalarVector                       #clamp op unimplemented
-  #ClampU32Vector                             #clamp op unimplemented
-  #ClampU32ScalarVector                       #clamp op unimplemented
+  "NonNanClampF32"
+  "ClampF32Scalar"
+  "ClampF32ScalarVector"
+  "ClampS32Vector"
+  "ClampS32ScalarVector"
+  #ClampU32Vector                             #data type U32 unimplemented
+  #ClampU32ScalarVector                       #data type U32 unimplemented
   "AddTwoParametersF32s"
   "AddTwoParametersZeroElementF32s"
   "AddParameterToConstantF32s"
