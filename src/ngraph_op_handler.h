@@ -180,7 +180,7 @@ class NGraphOpHandler : private DfsHloVisitorWithDefault {
   }
 
   Status HandleClamp(HloInstructionPtr clamp) final {
-    return DefaultAction(clamp);
+    return ProcessClamp(clamp);
   }
   Status HandleConcatenate(HloInstructionPtr concatenate) final {
     return ProcessConcatenate(concatenate, concatenate->operands());
@@ -325,6 +325,13 @@ class NGraphOpHandler : private DfsHloVisitorWithDefault {
   virtual Status ProcessBatchNormGrad(HloInstruction* hlo) {
     m_ostream << GetSupportedInstructionMsg(hlo);
     NGRAPH_VLOG(1) << GetSupportedInstructionMsg(hlo);
+    return Status::OK();
+  }
+
+  virtual Status ProcessClamp(
+      HloInstruction* clamp) {
+    m_ostream << GetSupportedInstructionMsg(clamp);
+    NGRAPH_VLOG(1) << GetSupportedInstructionMsg(clamp);
     return Status::OK();
   }
 

@@ -104,6 +104,8 @@ class NGraphEmitter : private NGraphOpHandler {
   Status ProcessElementwiseBinary(HloInstruction* hlo,
                                   HloOpcode opcode) override;
 
+  Status ProcessClamp(HloInstruction* clamp) override;
+
   Status ProcessConcatenate(
       HloInstruction* concatenate,
       tensorflow::gtl::ArraySlice<HloInstruction*> /*operands*/) override;
