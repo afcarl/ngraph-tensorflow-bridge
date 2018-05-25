@@ -18,6 +18,6 @@ set -u  # No unset variables after this point
 # Context is the maint-jenkins directory, to avoid including all of
 # ngraph-tensorflow-1.3 in the context.
 docker build  --rm=true \
-       --build-arg http_proxy=http://proxy-us.intel.com:911 \
-       --build-arg https_proxy=https://proxy-us.intel.com:911 \
+       --build-arg http_proxy=http://proxy-fm.intel.com:911 \
+       --build-arg https_proxy=http://proxy-fm.intel.com:912 \
        -f="${DOCKER_FILE}"  -t="ngtf_bridge_ci:${IMAGE_ID}"   .

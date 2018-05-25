@@ -63,8 +63,8 @@ docker run --rm \
        --env CMDLINE="${CMDLINE}" \
        --env TF_NG_DATASET="${TF_NG_DATASET}" \
        --env TF_NG_LOG_ID="${TF_NG_LOG_ID}" \
-       --env http_proxy=http://proxy-us.intel.com:911 \
-       --env https_proxy=https://proxy-us.intel.com:911 \
+       --env http_proxy=http://proxy-fm.intel.com:911 \
+       --env https_proxy=http://proxy-fm.intel.com:912 \
        -v "${dataset_dir}:${docker_dataset}" \
        -v "${bridge_dir}:${bridge_mountpoint}" \
        "${IMAGE_CLASS}:${IMAGE_ID}" "${RUNASUSER_SCRIPT}"

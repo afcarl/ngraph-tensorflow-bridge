@@ -45,8 +45,8 @@ BUILD_SCRIPT="${bridge_mountpoint}/test/ci/docker/docker-scripts/run-ngtf-mkldnn
 docker run --rm \
        --env RUN_UID="$(id -u)" \
        --env RUN_CMD="${BUILD_SCRIPT}" \
-       --env http_proxy=http://proxy-us.intel.com:911 \
-       --env https_proxy=https://proxy-us.intel.com:911 \
+       --env http_proxy=http://proxy-fm.intel.com:911 \
+       --env https_proxy=http://proxy-fm.intel.com:912 \
        --env PYTHON_VERSION_NUMBER="${PYTHON_VERSION_NUMBER}" \
        -v "${bridge_dir}:${bridge_mountpoint}" \
        -v "${ngtf_dir}:${ngtf_mountpoint}" \
